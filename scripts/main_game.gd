@@ -16,9 +16,9 @@ func _process(delta: float) -> void:
 func _on_spawn_timer_timeout() -> void:
 	var platform = platform_scene.instantiate()
 	var x = 1096
-	var y = rng.randf_range(prev_platform_vector_y-max_jump, get_viewport().size.y)
+	var y = rng.randf_range(prev_platform_vector_y - max_jump, get_viewport().size.y)
 	prev_platform_vector_y = y
-	var spawn_location = Vector2(x,y)
+	var spawn_location = Vector2(x, y)
 
 	platform.position = spawn_location
 
