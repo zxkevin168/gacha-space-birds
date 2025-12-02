@@ -25,9 +25,9 @@ func _physics_process(delta: float) -> void:
 	
 	$AnimatedSprite2D.flip_h = false if direction >= 0 else true
 		
-	if velocity.y > 0:
+	if velocity.y < 0:
 		$AnimatedSprite2D.animation = "jumping"
-	elif velocity.y < 0:
+	elif velocity.y > 0:
 		$AnimatedSprite2D.animation = "falling"
 	elif velocity.x != 0:
 		$AnimatedSprite2D.animation = "walking"
