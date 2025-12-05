@@ -1,0 +1,150 @@
+[gd_scene load_steps=14 format=3 uid="uid://c06k5vskawibk"]
+
+[ext_resource type="Script" uid="uid://cu2nqkdp1ut43" path="res://scripts/character_selection.gd" id="1_o5bvq"]
+[ext_resource type="Texture2D" uid="uid://m12hdwd5fojv" path="res://art/idle_1.png" id="2_dd54q"]
+[ext_resource type="Texture2D" uid="uid://cl05yswx4012a" path="res://art/idle_2.png" id="4_l56u2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5bvq"]
+atlas = ExtResource("2_dd54q")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l56u2"]
+atlas = ExtResource("2_dd54q")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xed0"]
+atlas = ExtResource("2_dd54q")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh1ae"]
+atlas = ExtResource("2_dd54q")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqj7k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5bvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l56u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xed0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh1ae")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqj7k"]
+atlas = ExtResource("4_l56u2")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iixut"]
+atlas = ExtResource("4_l56u2")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv8bk"]
+atlas = ExtResource("4_l56u2")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v724p"]
+atlas = ExtResource("4_l56u2")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rsvw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqj7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iixut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv8bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v724p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="character_selection" type="Node2D"]
+script = ExtResource("1_o5bvq")
+
+[node name="knight1_animation" type="AnimatedSprite2D" parent="."]
+top_level = true
+position = Vector2(288, 288)
+sprite_frames = SubResource("SpriteFrames_cqj7k")
+
+[node name="knight1_name" type="Label" parent="knight1_animation"]
+offset_left = -32.0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 55.0
+text = "Knight 1"
+
+[node name="knight2_animation" type="AnimatedSprite2D" parent="."]
+top_level = true
+position = Vector2(896, 288)
+sprite_frames = SubResource("SpriteFrames_7rsvw")
+frame = 3
+frame_progress = 0.22100991
+
+[node name="knight2_name" type="Label" parent="knight2_animation"]
+offset_left = -32.0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 55.0
+text = "Knight 2"
+
+[node name="knight1_button" type="Button" parent="."]
+offset_left = 247.0
+offset_top = 256.0
+offset_right = 327.0
+offset_bottom = 344.0
+
+[node name="knight2_button" type="Button" parent="."]
+offset_left = 856.0
+offset_top = 256.0
+offset_right = 936.0
+offset_bottom = 344.0
+
+[node name="character_selector_title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 8.0
+offset_right = 1152.0
+offset_bottom = 136.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Character Selector"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="selected_name" type="Label" parent="."]
+offset_top = 384.0
+offset_right = 1152.0
+offset_bottom = 552.0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play_button" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 568.0
+offset_right = 704.0
+offset_bottom = 632.0
+text = "Play"
+
+[connection signal="pressed" from="knight1_button" to="." method="_on_knight_1_button_pressed"]
+[connection signal="pressed" from="knight2_button" to="." method="_on_knight_2_button_pressed"]
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]

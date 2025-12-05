@@ -4,10 +4,15 @@ extends Node2D
 @export var max_jump = 30
 var prev_platform_vector_y = 505
 var rng = RandomNumberGenerator.new()
-
+var characters: Array[String] = ["res://scenes/knight1.tscn", "res://scenes/knight2.tscn"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$spawn_timer.start() # Replace with function body.
+	$spawn_timer.start()
+	var path: String = characters[Global.selected_character - 1]
+	var player_character = load(path).instantiate()
+	player_character.position = Vector2(240, 504)
+	add_child(player_character)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

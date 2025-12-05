@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctm7ijybvxjnk"]
+[gd_scene load_steps=3 format=3 uid="uid://ctm7ijybvxjnk"]
 
 [ext_resource type="Script" uid="uid://k5yhi3n84ocj" path="res://scripts/main_game.gd" id="1_d2op2"]
 [ext_resource type="PackedScene" uid="uid://did0y04jsq2sy" path="res://scenes/floor.tscn" id="2_0rdsr"]
-[ext_resource type="PackedScene" uid="uid://nfgaemqy2rdp" path="res://scenes/player_character.tscn" id="3_ipu61"]
 
 [node name="main_game" type="Node2D"]
 script = ExtResource("1_d2op2")
@@ -24,9 +23,5 @@ position = Vector2(1096, 505)
 
 [node name="spawn_timer" type="Timer" parent="."]
 wait_time = 5.0
-
-[node name="player_character" parent="." instance=ExtResource("3_ipu61")]
-top_level = true
-position = Vector2(240, 504)
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
