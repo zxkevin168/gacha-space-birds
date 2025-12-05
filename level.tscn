@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://15wmvodqfq3y"]
+
+[ext_resource type="PackedScene" uid="uid://bqrcs2tt108s3" path="res://player/player.tscn" id="1_vonw3"]
+[ext_resource type="PackedScene" uid="uid://oi0rg0scpf51" path="res://platform/platform.tscn" id="2_oi3di"]
+
+[node name="Level" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_vonw3")]
+position = Vector2(40, 382)
+JUMP_VELOCITY = -500.0
+
+[node name="Platform" parent="." instance=ExtResource("2_oi3di")]
+position = Vector2(0, 650)

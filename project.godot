@@ -11,5 +11,12 @@ config_version=5
 [application]
 
 config/name="Gacha Space Birds"
+run/main_scene="uid://15wmvodqfq3y"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
