@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5v72gdbxsbty"
-path="res://.godot/imported/platform_1.png-2d4bcdd3ad0c821bedfc0a5e49d91838.ctex"
+uid="uid://bihj4v8ljtvyi"
+path="res://.godot/imported/bonus_1.png-c10cd2c091270fc754b8e70ab7c375ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/platform_1.png"
-dest_files=["res://.godot/imported/platform_1.png-2d4bcdd3ad0c821bedfc0a5e49d91838.ctex"]
+source_file="res://buffs/assets/bonus_1.png"
+dest_files=["res://.godot/imported/bonus_1.png-c10cd2c091270fc754b8e70ab7c375ba.ctex"]
 
 [params]
 
