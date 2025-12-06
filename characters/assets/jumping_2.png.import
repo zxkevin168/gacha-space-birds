@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl05yswx4012a"
-path="res://.godot/imported/idle_2.png-0a7089e118bdc0f4825745941bc83b61.ctex"
+uid="uid://bpm352tbqvdds"
+path="res://.godot/imported/jumping_2.png-2ee79ff65501a6f9350fae000b3c2344.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/idle_2.png"
-dest_files=["res://.godot/imported/idle_2.png-0a7089e118bdc0f4825745941bc83b61.ctex"]
+source_file="res://characters/assets/jumping_2.png"
+dest_files=["res://.godot/imported/jumping_2.png-2ee79ff65501a6f9350fae000b3c2344.ctex"]
 
 [params]
 

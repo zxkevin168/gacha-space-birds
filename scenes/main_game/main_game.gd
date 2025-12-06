@@ -4,7 +4,7 @@ extends Node2D
 @export var max_jump = 30
 var prev_platform_vector_y = 505
 var rng = RandomNumberGenerator.new()
-var characters: Array[String] = ["res://scenes/knight1.tscn", "res://scenes/knight2.tscn"]
+var characters: Array[String] = ["res://characters/knight1.tscn", "res://characters/knight2.tscn"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$spawn_timer.start()

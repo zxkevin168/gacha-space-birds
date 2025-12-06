@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://bwnypx1rei3sg"]
 
-[ext_resource type="Script" uid="uid://rfgxgwy7bhu0" path="res://scripts/player_character.gd" id="1_5hcsg"]
-[ext_resource type="Texture2D" uid="uid://c0tn64y61ochg" path="res://art/falling_2.png" id="2_5hcsg"]
-[ext_resource type="Texture2D" uid="uid://cl05yswx4012a" path="res://art/idle_2.png" id="3_gmhof"]
-[ext_resource type="Texture2D" uid="uid://bpm352tbqvdds" path="res://art/jumping_2.png" id="4_tu5pt"]
-[ext_resource type="Texture2D" uid="uid://jhbwwymxxfxs" path="res://art/walking_2.png" id="5_t3ryk"]
+[ext_resource type="Script" uid="uid://rfgxgwy7bhu0" path="res://characters/player_character.gd" id="1_5hcsg"]
+[ext_resource type="Texture2D" uid="uid://c0tn64y61ochg" path="res://characters/assets/falling_2.png" id="2_5hcsg"]
+[ext_resource type="Texture2D" uid="uid://cl05yswx4012a" path="res://characters/assets/idle_2.png" id="3_gmhof"]
+[ext_resource type="Texture2D" uid="uid://bpm352tbqvdds" path="res://characters/assets/jumping_2.png" id="4_tu5pt"]
+[ext_resource type="Texture2D" uid="uid://jhbwwymxxfxs" path="res://characters/assets/walking_2.png" id="5_t3ryk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_meavg"]
 atlas = ExtResource("2_5hcsg")

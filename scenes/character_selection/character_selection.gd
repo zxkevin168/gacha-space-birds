@@ -23,4 +23,4 @@ func _on_knight_2_button_pressed() -> void:
 
 func _on_play_button_pressed() -> void:
 	Global.selected_character = selected
-	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_game/main_game.tscn")
