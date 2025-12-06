@@ -81,7 +81,7 @@ script = ExtResource("1_da02o")
 
 [node name="knight1_animation" type="AnimatedSprite2D" parent="."]
 top_level = true
-position = Vector2(288, 288)
+position = Vector2(360, 288)
 sprite_frames = SubResource("SpriteFrames_cqj7k")
 
 [node name="knight1_name" type="Label" parent="knight1_animation"]
@@ -106,9 +106,9 @@ offset_bottom = 55.0
 text = "Knight 2"
 
 [node name="knight1_button" type="Button" parent="."]
-offset_left = 247.0
+offset_left = 320.0
 offset_top = 256.0
-offset_right = 327.0
+offset_right = 400.0
 offset_bottom = 344.0
 
 [node name="knight2_button" type="Button" parent="."]
@@ -121,8 +121,7 @@ offset_bottom = 344.0
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 8.0
-offset_right = 1152.0
+offset_right = 1280.0
 offset_bottom = 136.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
@@ -132,17 +131,17 @@ vertical_alignment = 1
 
 [node name="selected_name" type="Label" parent="."]
 offset_top = 384.0
-offset_right = 1152.0
+offset_right = 1280.0
 offset_bottom = 552.0
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="play_button" type="Button" parent="."]
-offset_left = 448.0
-offset_top = 568.0
-offset_right = 704.0
-offset_bottom = 632.0
+offset_left = 512.0
+offset_top = 576.0
+offset_right = 768.0
+offset_bottom = 640.0
 text = "Play"
 
 [connection signal="pressed" from="knight1_button" to="." method="_on_knight_1_button_pressed"]
