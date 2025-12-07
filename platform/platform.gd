@@ -1,13 +1,14 @@
 extends StaticBody2D
 
 var speed = 100
+var velocity = Vector2.ZERO
 
 func _ready() -> void:
     pass
 
 
 func _process(delta: float) -> void:
-    var velocity = Vector2(-1, 0) * speed * delta
+    velocity = Vector2(-1, 0) * speed * delta
     position += velocity
 
 
