@@ -175,6 +175,7 @@ offset_bottom = 648.0
 color = Color(0.08, 0.15, 0.3, 1)
 
 [node name="bg2_label" type="Label" parent="bg2_preview"]
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 120.0
 text = "Blue
@@ -196,6 +197,7 @@ offset_bottom = 648.0
 color = Color(0.25, 0.08, 0.12, 1)
 
 [node name="bg3_label" type="Label" parent="bg3_preview"]
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 120.0
 text = "Red
