@@ -1,0 +1,316 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3h8m2qw9vjnb"]
+
+[ext_resource type="Script" path="res://scenes/main_game/star_sparkle.gd" id="1_sparkle"]
+
+[sub_resource type="Gradient" id="Gradient_bg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
+colors = PackedColorArray(0.02, 0.05, 0.12, 1, 0.05, 0.1, 0.2, 1, 0.08, 0.15, 0.28, 1, 0.12, 0.2, 0.35, 1, 0.16, 0.24, 0.4, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bg"]
+gradient = SubResource("Gradient_bg")
+width = 1280
+height = 800
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_moon"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7, 0.85, 1)
+colors = PackedColorArray(0.85, 0.9, 0.95, 1, 0.65, 0.7, 0.75, 0.9, 0.35, 0.4, 0.45, 0.4, 0.15, 0.2, 0.25, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_moon"]
+gradient = SubResource("Gradient_moon")
+width = 180
+height = 180
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+
+[node name="SpaceBlue" type="CanvasLayer"]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = SubResource("GradientTexture2D_bg")
+stretch_mode = 1
+
+[node name="Moon" type="TextureRect" parent="."]
+offset_left = 950.0
+offset_top = 80.0
+offset_right = 1130.0
+offset_bottom = 260.0
+texture = SubResource("GradientTexture2D_moon")
+stretch_mode = 1
+
+[node name="MoonCrater1" type="ColorRect" parent="Moon"]
+modulate = Color(1, 1, 1, 0.15)
+offset_left = 45.0
+offset_top = 55.0
+offset_right = 75.0
+offset_bottom = 85.0
+rotation = 0.523599
+color = Color(0.25, 0.3, 0.35, 1)
+
+[node name="MoonCrater2" type="ColorRect" parent="Moon"]
+modulate = Color(1, 1, 1, 0.12)
+offset_left = 105.0
+offset_top = 95.0
+offset_right = 125.0
+offset_bottom = 115.0
+color = Color(0.3, 0.35, 0.4, 1)
+
+[node name="MoonCrater3" type="ColorRect" parent="Moon"]
+modulate = Color(1, 1, 1, 0.1)
+offset_left = 70.0
+offset_top = 110.0
+offset_right = 95.0
+offset_bottom = 135.0
+rotation = 0.785398
+color = Color(0.28, 0.33, 0.38, 1)
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="Star1" type="ColorRect" parent="Stars"]
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 86.0
+offset_bottom = 46.0
+color = Color(0.9, 0.95, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star2" type="ColorRect" parent="Stars"]
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 204.0
+offset_bottom = 104.0
+color = Color(1, 1, 0.95, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star3" type="ColorRect" parent="Stars"]
+offset_left = 350.0
+offset_top = 60.0
+offset_right = 356.0
+offset_bottom = 66.0
+color = Color(0.95, 1, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star4" type="ColorRect" parent="Stars"]
+offset_left = 480.0
+offset_top = 130.0
+offset_right = 484.0
+offset_bottom = 134.0
+color = Color(1, 0.98, 0.9, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star5" type="ColorRect" parent="Stars"]
+offset_left = 620.0
+offset_top = 45.0
+offset_right = 626.0
+offset_bottom = 51.0
+color = Color(0.88, 0.92, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star6" type="ColorRect" parent="Stars"]
+offset_left = 750.0
+offset_top = 110.0
+offset_right = 754.0
+offset_bottom = 114.0
+color = Color(1, 1, 0.92, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star7" type="ColorRect" parent="Stars"]
+offset_left = 850.0
+offset_top = 180.0
+offset_right = 856.0
+offset_bottom = 186.0
+color = Color(0.92, 0.97, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star8" type="ColorRect" parent="Stars"]
+offset_left = 1100.0
+offset_top = 50.0
+offset_right = 1104.0
+offset_bottom = 54.0
+color = Color(1, 0.96, 0.88, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star9" type="ColorRect" parent="Stars"]
+offset_left = 1230.0
+offset_top = 140.0
+offset_right = 1236.0
+offset_bottom = 146.0
+color = Color(0.9, 0.94, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star10" type="ColorRect" parent="Stars"]
+offset_left = 140.0
+offset_top = 220.0
+offset_right = 144.0
+offset_bottom = 224.0
+color = Color(1, 1, 0.94, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star11" type="ColorRect" parent="Stars"]
+offset_left = 290.0
+offset_top = 180.0
+offset_right = 296.0
+offset_bottom = 186.0
+color = Color(0.94, 0.98, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star12" type="ColorRect" parent="Stars"]
+offset_left = 420.0
+offset_top = 250.0
+offset_right = 424.0
+offset_bottom = 254.0
+color = Color(1, 0.95, 0.86, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star13" type="ColorRect" parent="Stars"]
+offset_left = 560.0
+offset_top = 200.0
+offset_right = 566.0
+offset_bottom = 206.0
+color = Color(0.86, 0.9, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star14" type="ColorRect" parent="Stars"]
+offset_left = 710.0
+offset_top = 270.0
+offset_right = 714.0
+offset_bottom = 274.0
+color = Color(1, 1, 0.9, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star15" type="ColorRect" parent="Stars"]
+offset_left = 870.0
+offset_top = 310.0
+offset_right = 876.0
+offset_bottom = 316.0
+color = Color(0.93, 0.96, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star16" type="ColorRect" parent="Stars"]
+offset_left = 1050.0
+offset_top = 240.0
+offset_right = 1054.0
+offset_bottom = 244.0
+color = Color(1, 0.97, 0.92, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star17" type="ColorRect" parent="Stars"]
+offset_left = 1180.0
+offset_top = 300.0
+offset_right = 1186.0
+offset_bottom = 306.0
+color = Color(0.9, 0.93, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star18" type="ColorRect" parent="Stars"]
+offset_left = 50.0
+offset_top = 350.0
+offset_right = 54.0
+offset_bottom = 354.0
+color = Color(1, 1, 0.88, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star19" type="ColorRect" parent="Stars"]
+offset_left = 240.0
+offset_top = 320.0
+offset_right = 246.0
+offset_bottom = 326.0
+color = Color(0.96, 1, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star20" type="ColorRect" parent="Stars"]
+offset_left = 400.0
+offset_top = 370.0
+offset_right = 404.0
+offset_bottom = 374.0
+color = Color(1, 0.94, 0.9, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star21" type="ColorRect" parent="Stars"]
+offset_left = 580.0
+offset_top = 340.0
+offset_right = 586.0
+offset_bottom = 346.0
+color = Color(0.88, 0.91, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star22" type="ColorRect" parent="Stars"]
+offset_left = 780.0
+offset_top = 390.0
+offset_right = 784.0
+offset_bottom = 394.0
+color = Color(1, 1, 0.86, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star23" type="ColorRect" parent="Stars"]
+offset_left = 950.0
+offset_top = 360.0
+offset_right = 956.0
+offset_bottom = 366.0
+color = Color(0.91, 0.95, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star24" type="ColorRect" parent="Stars"]
+offset_left = 1120.0
+offset_top = 400.0
+offset_right = 1124.0
+offset_bottom = 404.0
+color = Color(1, 0.98, 0.94, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star25" type="ColorRect" parent="Stars"]
+offset_left = 160.0
+offset_top = 450.0
+offset_right = 166.0
+offset_bottom = 456.0
+color = Color(0.89, 0.93, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star26" type="ColorRect" parent="Stars"]
+offset_left = 330.0
+offset_top = 480.0
+offset_right = 334.0
+offset_bottom = 484.0
+color = Color(1, 0.96, 0.88, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star27" type="ColorRect" parent="Stars"]
+offset_left = 510.0
+offset_top = 520.0
+offset_right = 516.0
+offset_bottom = 526.0
+color = Color(0.94, 0.97, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star28" type="ColorRect" parent="Stars"]
+offset_left = 680.0
+offset_top = 490.0
+offset_right = 684.0
+offset_bottom = 494.0
+color = Color(1, 1, 0.92, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star29" type="ColorRect" parent="Stars"]
+offset_left = 820.0
+offset_top = 550.0
+offset_right = 826.0
+offset_bottom = 556.0
+color = Color(0.87, 0.9, 1, 1)
+script = ExtResource("1_sparkle")
+
+[node name="Star30" type="ColorRect" parent="Stars"]
+offset_left = 1000.0
+offset_top = 510.0
+offset_right = 1004.0
+offset_bottom = 514.0
+color = Color(1, 0.99, 0.9, 1)
+script = ExtResource("1_sparkle")
