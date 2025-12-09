@@ -5,8 +5,19 @@ extends Node2D
 var prev_platform_vector_y = 505
 var rng = RandomNumberGenerator.new()
 var characters: Array[String] = ["res://characters/knight1.tscn", "res://characters/knight2.tscn"]
+var backgrounds: Array[String] = [
+	"res://scenes/backgrounds/space_purple.tscn",
+	"res://scenes/backgrounds/space_blue.tscn",
+	"res://scenes/backgrounds/space_red.tscn"
+]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Load selected background
+	var bg_path: String = backgrounds[Global.selected_background - 1]
+	var background = load(bg_path).instantiate()
+	add_child(background)
+
 	$spawn_timer.start()
 	var path: String = characters[Global.selected_character - 1]
 	var player_character = load(path).instantiate()
