@@ -1,0 +1,10 @@
+{
+  "name": "Knight 1",
+  "stats": {
+    "max_hp": 3,
+    "speed": 400.0,
+    "jump_velocity": -500.0,
+    "acceleration": 60.0
+  },
+  "description": "A nimble, agile knight - lightning fast but fragile"
+}

@@ -1,9 +1,29 @@
 extends CharacterBody2D
 
+# Character ID to load stats from config
+@export var character_id: int = 1
+
+# Default values (will be overridden by config)
 @export var speed = 300.0
 @export var jump_velocity = -400.0
 
 var direction = 0
+var stats: CharacterStats
+
+func _ready() -> void:
+	# Load character stats from config
+	stats = CharacterStats.load_from_config(character_id)
+
+	# Apply stats to character
+	speed = stats.speed
+	jump_velocity = stats.jump_velocity
+
+	# Connect to HP change signal for future UI updates
+	stats.hp_changed.connect(_on_hp_changed)
+
+func _on_hp_changed(new_hp: int, max_hp: int) -> void:
+	# This will be used by the HP UI later
+	pass
 
 func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play()

@@ -1,0 +1,10 @@
+{
+  "name": "Knight 2",
+  "stats": {
+    "max_hp": 8,
+    "speed": 220.0,
+    "jump_velocity": -320.0,
+    "acceleration": 35.0
+  },
+  "description": "A heavily armored tank - slow and steady with massive health"
+}
