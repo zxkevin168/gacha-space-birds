@@ -3,15 +3,7 @@
   "stats": {
     "max_hp": 8,
     "speed": 220.0,
-    "jump_velocity": -320.0,
-    "acceleration": 35.0
+    "jump_velocity": -320.0
   },
-  "description": "Slow but tanky with massive health",
-  "sprites": {
-    "idle": "res://characters/assets/idle_2.png",
-    "walking": "res://characters/assets/walking_2.png",
-    "jumping": "res://characters/assets/jumping_2.png",
-    "falling": "res://characters/assets/falling_2.png"
-  },
-  "scene_path": "res://characters/knight2.tscn"
+  "description": "Slow but tanky with massive health"
 }

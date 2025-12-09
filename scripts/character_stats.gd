@@ -4,22 +4,12 @@ class_name CharacterStats
 # Character identification
 var character_name: String = ""
 var description: String = ""
-var scene_path: String = ""
-
-# Sprite paths
-var sprites: Dictionary = {
-	"idle": "",
-	"walking": "",
-	"jumping": "",
-	"falling": ""
-}
 
 # Character stats
 var max_hp: int = 5
 var current_hp: int = 5
 var speed: float = 300.0
 var jump_velocity: float = -400.0
-var acceleration: float = 50.0
 
 # Signal for when HP changes (useful for UI updates)
 signal hp_changed(new_hp: int, max_hp: int)
@@ -41,11 +31,6 @@ static func load_from_config(character_id: int) -> CharacterStats:
 			var data = json.data
 			stats.character_name = data.get("name", "Unknown")
 			stats.description = data.get("description", "")
-			stats.scene_path = data.get("scene_path", "")
-
-			# Load sprite paths
-			if data.has("sprites"):
-				stats.sprites = data["sprites"]
 
 			if data.has("stats"):
 				var stat_data = data["stats"]
@@ -53,7 +38,6 @@ static func load_from_config(character_id: int) -> CharacterStats:
 				stats.current_hp = stats.max_hp
 				stats.speed = stat_data.get("speed", 300.0)
 				stats.jump_velocity = stat_data.get("jump_velocity", -400.0)
-				stats.acceleration = stat_data.get("acceleration", 50.0)
 		else:
 			push_error("Error parsing character config: " + config_path)
 	else:
