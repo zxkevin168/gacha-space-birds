@@ -6,5 +6,12 @@
     "jump_velocity": -500.0,
     "acceleration": 60.0
   },
-  "description": "A nimble, agile knight - lightning fast but fragile"
+  "description": "Lightning fast but fragile",
+  "sprites": {
+    "idle": "res://characters/assets/idle_1.png",
+    "walking": "res://characters/assets/walking_1.png",
+    "jumping": "res://characters/assets/jumping_1.png",
+    "falling": "res://characters/assets/falling_1.png"
+  },
+  "scene_path": "res://characters/knight1.tscn"
 }

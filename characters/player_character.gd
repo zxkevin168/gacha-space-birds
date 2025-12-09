@@ -22,12 +22,39 @@ func _ready() -> void:
 	stats.hp_changed.connect(_on_hp_changed)
 
 func _on_hp_changed(new_hp: int, max_hp: int) -> void:
-	# This will be used by the HP UI later
-	pass
+	# Check if character died from HP loss
+	if new_hp <= 0:
+		_handle_death()
+
+func _die_from_fall() -> void:
+	# Character fell off the screen
+	if stats:
+		stats.current_hp = 0
+		stats.hp_changed.emit(0, stats.max_hp)
+	_handle_death()
+
+func _handle_death() -> void:
+	# Handle character death
+	# Disable physics processing to stop movement
+	set_physics_process(false)
+
+	# Wait a moment before reloading
+	await get_tree().create_timer(0.5).timeout
+	get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
+	# Check if character has fallen off screen
+	if position.y > get_viewport_rect().size.y + 100:
+		_die_from_fall()
+		return
+
+	# Check if character is dead
+	if stats and not stats.is_alive():
+		_handle_death()
+		return
+
 	$AnimatedSprite2D.play()
-	
+
 	var static_speed = Vector2.ZERO
 
 	# Move with the platform

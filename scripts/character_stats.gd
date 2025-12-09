@@ -4,6 +4,15 @@ class_name CharacterStats
 # Character identification
 var character_name: String = ""
 var description: String = ""
+var scene_path: String = ""
+
+# Sprite paths
+var sprites: Dictionary = {
+	"idle": "",
+	"walking": "",
+	"jumping": "",
+	"falling": ""
+}
 
 # Character stats
 var max_hp: int = 5
@@ -32,6 +41,11 @@ static func load_from_config(character_id: int) -> CharacterStats:
 			var data = json.data
 			stats.character_name = data.get("name", "Unknown")
 			stats.description = data.get("description", "")
+			stats.scene_path = data.get("scene_path", "")
+
+			# Load sprite paths
+			if data.has("sprites"):
+				stats.sprites = data["sprites"]
 
 			if data.has("stats"):
 				var stat_data = data["stats"]
