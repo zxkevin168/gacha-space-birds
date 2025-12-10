@@ -35,12 +35,20 @@ func _die_from_fall() -> void:
 
 func _handle_death() -> void:
 	# Handle character death
+	# Store reference to scene tree before disabling anything
+	var tree = get_tree()
+	if not tree:
+		return
+
 	# Disable physics processing to stop movement
 	set_physics_process(false)
 
-	# Wait a moment before reloading
-	await get_tree().create_timer(0.5).timeout
-	get_tree().reload_current_scene()
+	# Wait a moment before showing game over screen
+	await tree.create_timer(0.5).timeout
+
+	# Check tree is still valid before changing scene
+	if tree:
+		tree.change_scene_to_file("res://scenes/game_over/game_over.tscn")
 
 func _physics_process(delta: float) -> void:
 	# Check if character has fallen off screen
