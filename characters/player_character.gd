@@ -1,13 +1,68 @@
 extends CharacterBody2D
 
+# Character ID to load stats from config
+@export var character_id: int = 1
+
+# Default values (will be overridden by config)
 @export var speed = 300.0
 @export var jump_velocity = -400.0
 
 var direction = 0
+var stats: CharacterStats
+
+func _ready() -> void:
+	# Load character stats from config
+	stats = CharacterStats.load_from_config(character_id)
+
+	# Apply stats to character
+	speed = stats.speed
+	jump_velocity = stats.jump_velocity
+
+	# Connect to HP change signal for future UI updates
+	stats.hp_changed.connect(_on_hp_changed)
+
+func _on_hp_changed(new_hp: int, max_hp: int) -> void:
+	# Check if character died from HP loss
+	if new_hp <= 0:
+		_handle_death()
+
+func _die_from_fall() -> void:
+	# Character fell off the screen
+	if stats:
+		stats.current_hp = 0
+		stats.hp_changed.emit(0, stats.max_hp)
+	_handle_death()
+
+func _handle_death() -> void:
+	# Handle character death
+	# Store reference to scene tree before disabling anything
+	var tree = get_tree()
+	if not tree:
+		return
+
+	# Disable physics processing to stop movement
+	set_physics_process(false)
+
+	# Wait a moment before showing game over screen
+	await tree.create_timer(0.5).timeout
+
+	# Check tree is still valid before changing scene
+	if tree:
+		tree.change_scene_to_file("res://scenes/game_over/game_over.tscn")
 
 func _physics_process(delta: float) -> void:
+	# Check if character has fallen off screen
+	if position.y > get_viewport_rect().size.y + 100:
+		_die_from_fall()
+		return
+
+	# Check if character is dead
+	if stats and not stats.is_alive():
+		_handle_death()
+		return
+
 	$AnimatedSprite2D.play()
-	
+
 	var static_speed = Vector2.ZERO
 
 	# Move with the platform

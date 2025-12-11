@@ -21,8 +21,18 @@ func _ready() -> void:
 	$spawn_timer.start()
 	var path: String = characters[Global.selected_character - 1]
 	var player_character = load(path).instantiate()
+	player_character.character_id = Global.selected_character
 	player_character.position = Vector2(240, 504)
 	add_child(player_character)
+
+	# Create and setup HUD
+	var hud = CanvasLayer.new()
+	var hud_script = load("res://scenes/hud/game_hud.gd")
+	hud.set_script(hud_script)
+	add_child(hud)
+
+	# Connect HUD to player
+	hud.connect_to_player(player_character)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
