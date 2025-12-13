@@ -7,8 +7,8 @@
 script = ExtResource("1_d2op2")
 platform_scene = ExtResource("2_fjyug")
 
-[node name="floor" parent="." instance=ExtResource("2_0rdsr")]
-position = Vector2(184, 568)
+[node name="StartPlatform" parent="." instance=ExtResource("2_fjyug")]
+position = Vector2(156, 648)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
