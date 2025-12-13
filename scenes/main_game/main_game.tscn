@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctm7ijybvxjnk"]
+[gd_scene load_steps=3 format=3 uid="uid://ctm7ijybvxjnk"]
 
 [ext_resource type="Script" uid="uid://k5yhi3n84ocj" path="res://scenes/main_game/main_game.gd" id="1_d2op2"]
 [ext_resource type="PackedScene" uid="uid://oi0rg0scpf51" path="res://platform/platform.tscn" id="2_fjyug"]
@@ -7,8 +7,8 @@
 script = ExtResource("1_d2op2")
 platform_scene = ExtResource("2_fjyug")
 
-[node name="floor" parent="." instance=ExtResource("2_0rdsr")]
-position = Vector2(184, 568)
+[node name="StartPlatform" parent="." instance=ExtResource("2_fjyug")]
+position = Vector2(156, 648)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 

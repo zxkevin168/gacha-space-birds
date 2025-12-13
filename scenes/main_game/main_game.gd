@@ -20,7 +20,8 @@ func _ready() -> void:
     var background = load(bg_path).instantiate()
     add_child(background)
 
-    $spawn_timer.start()
+
+    $SpawnTimer.start()
     var path: String = characters[Global.selected_character - 1]
     var player_character = load(path).instantiate()
     player_character.character_id = Global.selected_character
@@ -35,14 +36,6 @@ func _ready() -> void:
 
     # Connect HUD to player
     hud.connect_to_player(player_character)
-    
-
-func _ready() -> void:
-    $SpawnTimer.start()
-    var path: String = characters[Global.selected_character - 1]
-    var player_character = load(path).instantiate()
-    player_character.position = Vector2(240, 504)
-    add_child(player_character)
 
 
 func _process(_delta: float) -> void:
