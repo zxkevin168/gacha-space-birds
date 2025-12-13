@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://k5yhi3n84ocj" path="res://scenes/main_game/main_game.gd" id="1_d2op2"]
 [ext_resource type="PackedScene" uid="uid://oi0rg0scpf51" path="res://platform/platform.tscn" id="2_fjyug"]
+[ext_resource type="PackedScene" uid="uid://c8v7n4p2m1x5k" path="res://enemies/enemy.tscn" id="3_enemy"]
 
 [node name="main_game" type="Node2D"]
 script = ExtResource("1_d2op2")
 platform_scene = ExtResource("2_fjyug")
+enemy_scene = ExtResource("3_enemy")
 
 [node name="StartPlatform" parent="." instance=ExtResource("2_fjyug")]
 position = Vector2(156, 648)

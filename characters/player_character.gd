@@ -9,6 +9,8 @@ extends CharacterBody2D
 
 var direction = 0
 var stats: CharacterStats
+var is_immune: bool = false
+var immunity_duration: float = 1.5  # Seconds of immunity after taking damage
 
 func _ready() -> void:
     # Load character stats from config
@@ -25,6 +27,36 @@ func _on_hp_changed(new_hp: int, max_hp: int) -> void:
     # Check if character died from HP loss
     if new_hp <= 0:
         _handle_death()
+
+func take_damage_from_enemy(damage: int) -> void:
+	# Only take damage if not immune
+	if is_immune or not stats:
+		return
+
+	stats.take_damage(damage)
+
+	# Grant immunity
+	is_immune = true
+
+	# Visual feedback - make sprite flash
+	_start_immunity_flash()
+
+	# Start immunity timer
+	await get_tree().create_timer(immunity_duration).timeout
+	is_immune = false
+	# Reset sprite modulation
+	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
+
+func _start_immunity_flash() -> void:
+	# Flash the sprite during immunity
+	var flash_count = int(immunity_duration * 4)  # Flash 4 times per second
+	for i in range(flash_count):
+		if is_immune:
+			$AnimatedSprite2D.modulate = Color(1, 1, 1, 0.4)  # Semi-transparent
+			await get_tree().create_timer(0.125).timeout
+			if is_immune:
+				$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)  # Full opacity
+				await get_tree().create_timer(0.125).timeout
 
 func _die_from_fall() -> void:
     # Character fell off the screen
