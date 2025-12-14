@@ -52,17 +52,17 @@ func _on_spawn_timer_timeout() -> void:
     var max_y = get_viewport().size.y - platform_height
     spawn_position.y = rng.randf_range(spawn_position.y - max_jump, max_y)
 
-	platform.position = spawn_location
+    platform.position = spawn_position
 
-	add_child(platform)
-	last_platform = platform
+    add_child(platform)
+    last_platform = platform
 
-		# Randomly spawn enemy on platform
-	if enemy_scene and rng.randf() < enemy_spawn_chance:
-		var enemy = enemy_scene.instantiate()
-		# Position enemy on top of the platform relative to platform
-		# Platform is 29 pixels tall, enemy is 50 pixels tall
-		var enemy_x = rng.randf_range(20, 140)  # Random position on platform
-		var enemy_y = -50  # On top of platform (relative to platform position)
-		enemy.position = Vector2(enemy_x, enemy_y)
-		platform.add_child(enemy)  # Make enemy a child of platform so it moves with it
+    # Randomly spawn enemy on platform
+    if enemy_scene and rng.randf() < enemy_spawn_chance:
+        var enemy = enemy_scene.instantiate()
+        # Position enemy on top of the platform relative to platform
+        # Platform is 29 pixels tall, enemy is 50 pixels tall
+        var enemy_x = rng.randf_range(20, 140)  # Random position on platform
+        var enemy_y = -50  # On top of platform (relative to platform position)
+        enemy.position = Vector2(enemy_x, enemy_y)
+        platform.add_child(enemy)  # Make enemy a child of platform so it moves with it
