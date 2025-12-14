@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 # Character ID to load stats from config
 @export var character_id: int = 1
-
 # Default values (will be overridden by config)
 @export var speed = 300.0
 @export var jump_velocity = -400.0
@@ -86,7 +85,6 @@ func _physics_process(delta: float) -> void:
     else:
         velocity.x = move_toward(velocity.x, static_speed.x, speed)
 
-
     if velocity.y < 0:
         $AnimatedSprite2D.animation = "jumping"
     elif velocity.y > 0:
@@ -95,6 +93,5 @@ func _physics_process(delta: float) -> void:
         $AnimatedSprite2D.animation = "idle"
     else:
         $AnimatedSprite2D.animation = "walking"
-
 
     move_and_slide()

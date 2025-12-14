@@ -1,0 +1,18 @@
+name: No Tabs in GDScript
+on:
+  push:
+    paths:
+      - '**/*.gd'
+  pull_request:
+    paths:
+      - '**/*.gd'
+
+jobs:
+  check-tabs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tab check script
+        run: |
+          chmod +x scripts/check_no_tabs.sh
+          ./scripts/check_no_tabs.sh
