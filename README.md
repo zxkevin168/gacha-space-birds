@@ -324,6 +324,13 @@ window/stretch/mode = "canvas_items"
 3. **Clean up nodes** - Always `queue_free()` dynamic objects
 4. **Group related files** - Keep scene + script + assets together
 
+### Signal Connections
+- **Always connect signals in the Godot editor (scene `.tscn` files), not in `.gd` scripts.**
+    - This ensures consistency, easier debugging, and clear separation between logic and scene structure.
+    - To connect: select the node, go to the Node tab → Signals, and connect to the desired method.
+    - The connection will appear in the `.tscn` file under `[connection ...]`.
+    - Avoid using `signal.connect()` in GDScript except for dynamic or runtime-only cases.
+
 ### Naming Conventions
 - **Scenes:** lowercase_with_underscores.tscn
 - **Scripts:** lowercase_with_underscores.gd

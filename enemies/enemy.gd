@@ -8,8 +8,6 @@ var patrol_min = 10.0  # Minimum x position on platform
 var patrol_max = 150.0  # Maximum x position on platform
 
 func _ready() -> void:
-	# Connect collision signal
-	body_entered.connect(_on_body_entered)
 	# Randomize starting direction
 	patrol_direction = 1 if randf() > 0.5 else -1
 

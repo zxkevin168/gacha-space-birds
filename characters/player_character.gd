@@ -1,16 +1,23 @@
 extends CharacterBody2D
 
-# Character ID to load stats from config
-@export var character_id: int = 1
+# === Character Parameters & Immunity Settings ===
+# (Tune these as needed)
+@export var character_id: int = 1  # Character ID to load stats from config
+@export var speed: float = 300.0   # Default horizontal speed (overridden by config)
+@export var jump_velocity: float = -400.0  # Default jump strength (overridden by config)
 
-# Default values (will be overridden by config)
-@export var speed = 300.0
-@export var jump_velocity = -400.0
+var immunity_duration: float = 1.5  # Seconds of immunity after taking damage
 
-var direction = 0
+# Flash effect constants (for immunity visual feedback)
+const IMMUNITY_FLASHES_PER_SECOND := 4
+const IMMUNITY_FLASH_OFF_ALPHA := 0.4
+const IMMUNITY_FLASH_ON_ALPHA := 1.0
+const IMMUNITY_FLASH_HALF_PERIOD := 1.0 / (IMMUNITY_FLASHES_PER_SECOND * 2) # 0.125s for 4Hz
+
+# === Internal State ===
+var direction := 0
 var stats: CharacterStats
 var is_immune: bool = false
-var immunity_duration: float = 1.5  # Seconds of immunity after taking damage
 
 func _ready() -> void:
     # Load character stats from config
@@ -48,15 +55,21 @@ func take_damage_from_enemy(damage: int) -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
 
 func _start_immunity_flash() -> void:
-	# Flash the sprite during immunity
-	var flash_count = int(immunity_duration * 4)  # Flash 4 times per second
+	"""
+	Flashes the sprite to indicate temporary immunity after taking damage.
+	The sprite alternates between semi-transparent and fully opaque at a fixed rate.
+	Flashing stops early if immunity is lost.
+	"""
+	var flash_count = int(immunity_duration * IMMUNITY_FLASHES_PER_SECOND)
 	for i in range(flash_count):
-		if is_immune:
-			$AnimatedSprite2D.modulate = Color(1, 1, 1, 0.4)  # Semi-transparent
-			await get_tree().create_timer(0.125).timeout
-			if is_immune:
-				$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)  # Full opacity
-				await get_tree().create_timer(0.125).timeout
+		if not is_immune:
+			break  # Stop flashing if immunity ends early
+		$AnimatedSprite2D.modulate = Color(1, 1, 1, IMMUNITY_FLASH_OFF_ALPHA)
+		await get_tree().create_timer(IMMUNITY_FLASH_HALF_PERIOD).timeout
+		if not is_immune:
+			break
+		$AnimatedSprite2D.modulate = Color(1, 1, 1, IMMUNITY_FLASH_ON_ALPHA)
+		await get_tree().create_timer(IMMUNITY_FLASH_HALF_PERIOD).timeout
 
 func _die_from_fall() -> void:
     # Character fell off the screen
