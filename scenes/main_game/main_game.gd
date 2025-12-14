@@ -26,7 +26,6 @@ func _ready() -> void:
     $SpawnTimer.start()
     var path: String = characters[Global.selected_character - 1]
     var player_character = load(path).instantiate()
-    player_character.character_id = Global.selected_character
     player_character.position = Vector2(240, 504)
     add_child(player_character)
 

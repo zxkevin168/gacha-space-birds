@@ -55,11 +55,11 @@ func take_damage_from_enemy(damage: int) -> void:
     $AnimatedSprite2D.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _start_immunity_flash() -> void:
-	"""
-	Flashes the sprite to indicate temporary immunity after taking damage.
-	The sprite alternates between semi-transparent and fully opaque at a fixed rate.
-	Flashing stops early if immunity is lost.
-	"""
+    """
+    Flashes the sprite to indicate temporary immunity after taking damage.
+    The sprite alternates between semi-transparent and fully opaque at a fixed rate.
+    Flashing stops early if immunity is lost.
+    """
     var flash_count = int(immunity_duration * IMMUNITY_FLASHES_PER_SECOND)
     for i in range(flash_count):
         if not is_immune:
