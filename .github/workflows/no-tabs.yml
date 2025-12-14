@@ -14,5 +14,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run tab check script
         run: |
-          chmod +x scripts/check_no_tabs.sh
-          ./scripts/check_no_tabs.sh
+          chmod +x .ci/check_no_tabs.sh
+          .ci/check_no_tabs.sh
