@@ -175,6 +175,7 @@ size = Vector2(31, 63)
 [node name="knight1" type="CharacterBody2D"]
 top_level = true
 script = ExtResource("1_h77iu")
+character_id = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tncax")

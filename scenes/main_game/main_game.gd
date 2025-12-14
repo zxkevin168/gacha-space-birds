@@ -1,7 +1,9 @@
 extends Node2D
 
 @export var platform_scene: PackedScene
+@export var enemy_scene: PackedScene
 @export var max_jump = 30
+@export var enemy_spawn_chance: float = 0.7  # 70% chance to spawn enemy on platform
 
 @onready var last_platform: Node2D = $StartPlatform
 var prev_platform_vector_y = 505
@@ -23,7 +25,6 @@ func _ready() -> void:
     $SpawnTimer.start()
     var path: String = characters[Global.selected_character - 1]
     var player_character = load(path).instantiate()
-    player_character.character_id = Global.selected_character
     player_character.position = Vector2(240, 504)
     add_child(player_character)
 
@@ -49,5 +50,16 @@ func _on_spawn_timer_timeout() -> void:
     spawn_position.y = rng.randf_range(spawn_position.y - max_jump, max_y)
 
     platform.position = spawn_position
+
     add_child(platform)
     last_platform = platform
+
+    # Randomly spawn enemy on platform
+    if enemy_scene and rng.randf() < enemy_spawn_chance:
+        var enemy = enemy_scene.instantiate()
+        # Position enemy on top of the platform relative to platform
+        # Platform is 29 pixels tall, enemy is 50 pixels tall
+        var enemy_x = rng.randf_range(20, 140)  # Random position on platform
+        var enemy_y = -50  # On top of platform (relative to platform position)
+        enemy.position = Vector2(enemy_x, enemy_y)
+        platform.add_child(enemy)  # Make enemy a child of platform so it moves with it
