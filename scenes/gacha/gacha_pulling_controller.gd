@@ -6,14 +6,15 @@ extends Control
 
 var pull = preload("res://scenes/gacha/pull_object.tscn")
 var selected
-var winnings
+var winnings = ""
 
 # rate is out off 1000
 var five_star_rate = 250
 var four_star_rate = 500
 
-var spinning = true
-var scroll_speed = 40
+var spinning = false
+const MAX_SCROLL_SPEED = 40
+var scroll_speed = 0
 
 @onready var gacha_info = {
     "five_star": {
@@ -29,13 +30,23 @@ var scroll_speed = 40
 
 func _ready() -> void:
     $Timer.start()
-    for i in range(1, 1001):
-        if i % 10 > 0 and i % 10 <= 7:
+    for i in range(0, 1000):
+        if i % 10 <= 6:
             create_item("three_star")
-        elif i % 10 > 7 and i % 10 <= 9:
+        elif i % 10 > 6 and i % 10 <= 8:
             create_item("four_star")
         else:
             create_item("five_star")
+
+func create_item(item_type: String):
+    var img = pull.instantiate()
+    img.texture = gacha_info[item_type]["texture"]
+    $ScrollContainer/HBoxContainer.add_child(img)
+
+func start_single_pull():
+    $ScrollContainer.scroll_horizontal = 0
+    spinning = true
+    scroll_speed = MAX_SCROLL_SPEED
     var pull_id = randi_range(1, 1000)
     if pull_id <= five_star_rate:
         winnings = "five_star"
@@ -45,27 +56,24 @@ func _ready() -> void:
         winnings = "three_star"
     print(winnings)
 
-func create_item(item_type: String):
-    var img = pull.instantiate()
-    img.texture = gacha_info[item_type]["texture"]
-    $ScrollContainer/HBoxContainer.add_child(img)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    $ScrollContainer.scroll_horizontal += scroll_speed
+    if spinning:
+        $ScrollContainer.scroll_horizontal += scroll_speed
     if scroll_speed == 0:
         spinning = false
 
 
 func _on_timer_timeout() -> void:
-    if scroll_speed <= 3 and selected == gacha_info[winnings]["texture"]:
-        scroll_speed -= 1
-        scroll_speed = max(0, scroll_speed)
-    elif scroll_speed > 15:
-        scroll_speed -= 1
-    else:
-        scroll_speed -= 0.25
-        scroll_speed = max(3, scroll_speed)
+    if spinning:
+        if scroll_speed > 3:
+            scroll_speed -= 1
+        elif scroll_speed <= 3 and selected == gacha_info[winnings]["texture"]:
+            scroll_speed -= 1
+            scroll_speed = max(0, scroll_speed)
+        else:
+            scroll_speed -= 0.25
+            scroll_speed = max(3, scroll_speed)
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
