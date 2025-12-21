@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://di1xst3ga6fmv"]
+
+[ext_resource type="Script" uid="uid://cyu4ijf57wxjh" path="res://scenes/gacha/gacha_main.gd" id="1_u23gm"]
+[ext_resource type="PackedScene" uid="uid://d0l2bdf1qo6ld" path="res://scenes/gacha/gacha_pulling_controller.tscn" id="2_duj4c"]
+
+[node name="gacha_main" type="Node2D"]
+script = ExtResource("1_u23gm")
+
+[node name="GachaPullingController" parent="." instance=ExtResource("2_duj4c")]
+
+[node name="winning_name" type="Label" parent="."]
+offset_left = 512.0
+offset_top = 632.0
+offset_right = 768.0
+offset_bottom = 696.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spin" type="Button" parent="."]
+offset_left = 576.0
+offset_top = 704.0
+offset_right = 704.0
+offset_bottom = 744.0
+text = "SPIN"
+
+[node name="main_menu" type="Button" parent="."]
+offset_left = 1088.0
+offset_top = 704.0
+offset_right = 1216.0
+offset_bottom = 744.0
+text = "Main Menu"
+
+[connection signal="pressed" from="spin" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="main_menu" to="." method="_on_main_menu_pressed"]

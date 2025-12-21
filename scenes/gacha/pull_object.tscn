@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2vqi8qymgsxk"]
+
+[ext_resource type="Texture2D" uid="uid://b3s62w5hm52r4" path="res://scenes/gacha/assets/3_star.png" id="1_kuhdy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjrkm"]
+size = Vector2(248, 248)
+
+[node name="pull_object" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kuhdy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(124, 124)
+shape = SubResource("RectangleShape2D_wjrkm")
