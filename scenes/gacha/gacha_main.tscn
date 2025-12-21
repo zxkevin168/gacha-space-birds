@@ -5,13 +5,6 @@
 [node name="gacha_main" type="Node2D"]
 script = ExtResource("1_u23gm")
 
-[node name="spin" type="Button" parent="."]
-offset_left = 576.0
-offset_top = 704.0
-offset_right = 704.0
-offset_bottom = 744.0
-text = "SPIN"
-
 [node name="winning_name" type="Label" parent="."]
 offset_left = 512.0
 offset_top = 632.0
@@ -20,4 +13,19 @@ offset_bottom = 696.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="spin" type="Button" parent="."]
+offset_left = 576.0
+offset_top = 704.0
+offset_right = 704.0
+offset_bottom = 744.0
+text = "SPIN"
+
+[node name="main_menu" type="Button" parent="."]
+offset_left = 1088.0
+offset_top = 704.0
+offset_right = 1216.0
+offset_bottom = 744.0
+text = "Main Menu"
+
 [connection signal="pressed" from="spin" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="main_menu" to="." method="_on_main_menu_pressed"]

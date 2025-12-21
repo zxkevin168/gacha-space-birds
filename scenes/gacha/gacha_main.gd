@@ -23,3 +23,7 @@ func _on_button_pressed() -> void:
             pull_child_scene.queue_free()
         pull_child_scene = pull_scene.instantiate()
         add_child(pull_child_scene)
+
+
+func _on_main_menu_pressed() -> void:
+    get_tree().change_scene_to_file("res://scenes/character_selection/character_selection.tscn")

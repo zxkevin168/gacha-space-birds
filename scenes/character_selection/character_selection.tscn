@@ -154,6 +154,7 @@ offset_bottom = 648.0
 color = Color(0.15, 0.08, 0.25, 1)
 
 [node name="bg1_label" type="Label" parent="bg1_preview"]
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 120.0
 text = "Purple
@@ -219,9 +220,17 @@ offset_bottom = 744.0
 theme_override_font_sizes/font_size = 32
 text = "Play"
 
+[node name="gacha" type="Button" parent="."]
+offset_left = 1080.0
+offset_top = 680.0
+offset_right = 1240.0
+offset_bottom = 744.0
+text = "GACHA"
+
 [connection signal="pressed" from="knight1_button" to="." method="_on_knight_1_button_pressed"]
 [connection signal="pressed" from="knight2_button" to="." method="_on_knight_2_button_pressed"]
 [connection signal="pressed" from="bg1_button" to="." method="_on_bg_1_button_pressed"]
 [connection signal="pressed" from="bg2_button" to="." method="_on_bg_2_button_pressed"]
 [connection signal="pressed" from="bg3_button" to="." method="_on_bg_3_button_pressed"]
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="gacha" to="." method="_on_gacha_pressed"]

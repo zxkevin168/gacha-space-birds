@@ -66,3 +66,7 @@ func _on_play_button_pressed() -> void:
     Global.selected_character = selected_char
     Global.selected_background = selected_bg
     get_tree().change_scene_to_file("res://scenes/main_game/main_game.tscn")
+
+
+func _on_gacha_pressed() -> void:
+    get_tree().change_scene_to_file("res://scenes/gacha/gacha_main.tscn")
