@@ -13,8 +13,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     if pull_child_scene:
         in_action = pull_child_scene.spinning
-    if not in_action:
-        $winning_name.text = pull_child_scene.winnings
+        if not in_action:
+            $winning_name.text = pull_child_scene.winnings
 
 
 func _on_button_pressed() -> void:
