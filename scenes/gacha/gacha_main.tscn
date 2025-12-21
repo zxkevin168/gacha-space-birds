@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://di1xst3ga6fmv"]
+
+[ext_resource type="Script" uid="uid://cyu4ijf57wxjh" path="res://scenes/gacha/gacha_main.gd" id="1_u23gm"]
+
+[node name="gacha_main" type="Node2D"]
+script = ExtResource("1_u23gm")
+
+[node name="spin" type="Button" parent="."]
+offset_left = 576.0
+offset_top = 704.0
+offset_right = 704.0
+offset_bottom = 744.0
+text = "SPIN"
+
+[node name="winning_name" type="Label" parent="."]
+offset_left = 512.0
+offset_top = 632.0
+offset_right = 768.0
+offset_bottom = 696.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="spin" to="." method="_on_button_pressed"]
